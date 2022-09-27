@@ -12,17 +12,35 @@ repositories {
 }
 
 dependencies {
-    annotationProcessor("io.micronaut:micronaut-http-validation")
-    implementation(project(":app"))
+    // shared code
+    annotationProcessor("io.micronaut.data:micronaut-data-processor")
+    implementation(project(":app")) {
+        exclude group:'com.h2database', module:'h2'
+    }
+
+    // SDK
     implementation("io.micronaut.aws:micronaut-aws-sdk-v2")
+
+    // tracing
+    implementation("io.micronaut.tracing:micronaut-tracing-opentelemetry-http")
+    implementation("io.opentelemetry:opentelemetry-exporter-otlp")
+    implementation("io.opentelemetry:opentelemetry-extension-aws")
+    implementation("io.opentelemetry.contrib:opentelemetry-aws-xray")
+
+    // object storage
     implementation("io.micronaut.objectstorage:micronaut-object-storage-aws:1.1.0")
+
+    // secrets
     implementation("io.micronaut.aws:micronaut-aws-secretsmanager")
+
+    // database
+    implementation("io.micronaut.data:micronaut-data-jdbc")
     runtimeOnly("mysql:mysql-connector-java")
 }
 
 
 application {
-    mainClass.set("aws.Application")
+    mainClass.set("aws.AwsApplication")
 }
 java {
     sourceCompatibility = JavaVersion.toVersion("17")

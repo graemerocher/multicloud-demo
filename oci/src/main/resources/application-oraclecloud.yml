@@ -6,9 +6,37 @@ micronaut:
       images:
         bucket: bucket-20220926-1302
         namespace: frepf2lc7rqc
+  metrics:
+    enabled: true
+    binders:
+      files:
+        enabled: true
+      jdbc:
+        enabled: true
+      jvm:
+        enabled: true
+      logback:
+        enabled: true
+      processor:
+        enabled: true
+      uptime:
+        enabled: true
+      web:
+        enabled: true
+    export:
+      oraclecloud:
+        enabled: true
+        namespace: cloudworld2022demo
 datasources:
   default:
     ocid: ${ATP_OCID}
     wallet-password: ${ATP_WALLET_PASSWORD}
     username: ${ATP_USERNAME}
     password: ${ATP_PASSWORD}
+    dialect: oracle
+otel:
+  traces:
+    exporter: zipkin
+  exporter:
+    zipkin:
+      endpoint: https://${APM_ENDPOINT}/20200101/observations/public-span?dataFormat=zipkin&dataFormatVersion=2&dataKey=${APM_KEY}

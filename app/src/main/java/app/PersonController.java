@@ -44,7 +44,7 @@ public class PersonController {
     @Get("/images/{id}")
     Optional<StreamedFile> getImage(Long id) {
         return repository.findById(id)
-                .flatMap(person -> objectStorageOperations.retrieve(person.getImageId()))
+                .flatMap(person -> objectStorageOperations.retrieve(person.imageId()))
                 .map(e -> ((ObjectStorageEntry<?>) e).toStreamedFile());
     }
 }

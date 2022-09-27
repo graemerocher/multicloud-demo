@@ -12,6 +12,11 @@ datasources:
     username: ${username}
     password: ${password}
     url: "jdbc:mysql://${host}:${port}/micronaut"
+otel:
+  traces:
+    exporter: otlp
+    propagator: tracecontext, baggage, xray
+    exclusions: /health
 netty:
   default:
     allocator:

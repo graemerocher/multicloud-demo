@@ -12,20 +12,38 @@ repositories {
 }
 
 dependencies {
-    annotationProcessor("io.micronaut:micronaut-http-validation")
-    implementation(project(":app"))
+    // shared code
+    annotationProcessor("io.micronaut.data:micronaut-data-processor")
+    implementation(project(":app")) {
+        exclude group:'com.h2database', module:'h2'
+    }
+
+    // tracing
+    implementation("io.opentelemetry:opentelemetry-exporter-zipkin")
+    // metrics
+    implementation("com.oracle.oci.sdk:oci-java-sdk-monitoring")
+    implementation("io.micronaut.micrometer:micronaut-micrometer-core")
+    implementation("io.micronaut.oraclecloud:micronaut-oraclecloud-micrometer")
+
+    // object storage
     implementation("io.micronaut.objectstorage:micronaut-object-storage-oracle-cloud:1.1.0")
+
+    // database
+    implementation("io.micronaut.data:micronaut-data-jdbc")
     implementation("io.micronaut.oraclecloud:micronaut-oraclecloud-atp")
-    implementation("io.micronaut.oraclecloud:micronaut-oraclecloud-sdk")
-    implementation("io.micronaut.oraclecloud:micronaut-oraclecloud-vault")
     implementation("io.micronaut.sql:micronaut-jdbc-hikari")
-    implementation("jakarta.annotation:jakarta.annotation-api")
-    runtimeOnly("ch.qos.logback:logback-classic")
+
+    // sdk
+    implementation("io.micronaut.oraclecloud:micronaut-oraclecloud-sdk")
+
+    // vault
+    implementation("io.micronaut.oraclecloud:micronaut-oraclecloud-vault")
+
 }
 
 
 application {
-    mainClass.set("oci.Application")
+    mainClass.set("oci.OciApplication")
 }
 java {
     sourceCompatibility = JavaVersion.toVersion("17")

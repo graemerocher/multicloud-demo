@@ -13,15 +13,17 @@ repositories {
 dependencies {
     annotationProcessor("io.micronaut.data:micronaut-data-processor")
     annotationProcessor("io.micronaut:micronaut-http-validation")
+    annotationProcessor("io.micronaut.tracing:micronaut-tracing-opentelemetry-annotation")
     implementation("io.micronaut:micronaut-http-client")
     implementation("io.micronaut:micronaut-jackson-databind")
-    implementation("io.micronaut.data:micronaut-data-hibernate-jpa")
+    implementation("io.micronaut.data:micronaut-data-jdbc")
     implementation("io.micronaut.objectstorage:micronaut-object-storage-core:1.1.0")
     implementation("io.micronaut.sql:micronaut-jdbc-hikari")
     implementation("io.micronaut.views:micronaut-views-jte")
     implementation("jakarta.annotation:jakarta.annotation-api")
+    implementation("io.micronaut.tracing:micronaut-tracing-opentelemetry-http")
     runtimeOnly("ch.qos.logback:logback-classic")
-    testImplementation("com.h2database:h2")
+    runtimeOnly("com.h2database:h2")
     implementation("io.micronaut:micronaut-validation")
 }
 
