@@ -1,0 +1,18 @@
+micronaut:
+  application:
+    name: aws
+  object-storage:
+    aws:
+      images:
+        bucket: cloudworld-demo
+datasources:
+  default:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    db-type: mysql
+    username: ${username}
+    password: ${password}
+    url: "jdbc:mysql://${host}:${port}/micronaut"
+netty:
+  default:
+    allocator:
+      max-order: 3

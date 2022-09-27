@@ -1,0 +1,51 @@
+plugins {
+    id("com.github.johnrengelman.shadow") version "7.1.2"
+    id("io.micronaut.application") version "3.6.0"
+    id("io.micronaut.test-resources") version "3.6.0"
+}
+
+version = "0.1"
+group = "oci"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    annotationProcessor("io.micronaut:micronaut-http-validation")
+    implementation(project(":app"))
+    implementation("io.micronaut.objectstorage:micronaut-object-storage-oracle-cloud")
+    implementation("io.micronaut.oraclecloud:micronaut-oraclecloud-atp")
+    implementation("io.micronaut.oraclecloud:micronaut-oraclecloud-sdk")
+    implementation("io.micronaut.oraclecloud:micronaut-oraclecloud-vault")
+    implementation("io.micronaut.sql:micronaut-jdbc-hikari")
+    implementation("jakarta.annotation:jakarta.annotation-api")
+    runtimeOnly("ch.qos.logback:logback-classic")
+}
+
+
+application {
+    mainClass.set("oci.Application")
+}
+java {
+    sourceCompatibility = JavaVersion.toVersion("17")
+    targetCompatibility = JavaVersion.toVersion("17")
+}
+
+graalvmNative.toolchainDetection = false
+
+graalvmNative.binaries.configureEach {
+    jvmArgs("--add-exports=org.graalvm.sdk/org.graalvm.nativeimage.impl=ALL-UNNAMED")
+}
+
+micronaut {
+    runtime("netty")
+    testRuntime("junit5")
+    processing {
+        incremental(true)
+        annotations("oci.*")
+    }
+}
+
+
+

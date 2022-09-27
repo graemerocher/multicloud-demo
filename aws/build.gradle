@@ -1,0 +1,47 @@
+plugins {
+    id("com.github.johnrengelman.shadow") version "7.1.2"
+    id("io.micronaut.application") version "3.6.0"
+    id("io.micronaut.test-resources") version "3.6.0"
+}
+
+version = "0.1"
+group = "aws"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    annotationProcessor("io.micronaut:micronaut-http-validation")
+    implementation(project(":app"))
+    implementation("io.micronaut.aws:micronaut-aws-sdk-v2")
+    implementation("io.micronaut.objectstorage:micronaut-object-storage-aws")
+    implementation("io.micronaut.aws:micronaut-aws-secretsmanager")
+    runtimeOnly("mysql:mysql-connector-java")
+}
+
+
+application {
+    mainClass.set("aws.Application")
+}
+java {
+    sourceCompatibility = JavaVersion.toVersion("17")
+    targetCompatibility = JavaVersion.toVersion("17")
+}
+
+graalvmNative.toolchainDetection = false
+micronaut {
+    runtime("netty")
+    testRuntime("junit5")
+    processing {
+        incremental(true)
+        annotations("aws.*")
+    }
+    testResources {
+        additionalModules.add("jdbc-mysql")
+    }
+}
+
+graalvmNative.binaries.configureEach {
+    jvmArgs("--add-exports=org.graalvm.sdk/org.graalvm.nativeimage.impl=ALL-UNNAMED")
+}

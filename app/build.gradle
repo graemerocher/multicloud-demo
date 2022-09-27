@@ -1,0 +1,57 @@
+plugins {
+    id("io.micronaut.application") version "3.6.0"
+    id("gg.jte.gradle") version "1.12.1"
+}
+
+version = "0.1"
+group = "app"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    annotationProcessor("io.micronaut.data:micronaut-data-processor")
+    annotationProcessor("io.micronaut:micronaut-http-validation")
+    implementation("io.micronaut:micronaut-http-client")
+    implementation("io.micronaut:micronaut-jackson-databind")
+    implementation("io.micronaut.data:micronaut-data-hibernate-jpa")
+    implementation("io.micronaut.objectstorage:micronaut-object-storage-core")
+    implementation("io.micronaut.sql:micronaut-jdbc-hikari")
+    implementation("io.micronaut.views:micronaut-views-jte")
+    implementation("jakarta.annotation:jakarta.annotation-api")
+    runtimeOnly("ch.qos.logback:logback-classic")
+    testImplementation("com.h2database:h2")
+    implementation("io.micronaut:micronaut-validation")
+}
+
+
+application {
+    mainClass.set("app.Application")
+}
+java {
+    sourceCompatibility = JavaVersion.toVersion("17")
+    targetCompatibility = JavaVersion.toVersion("17")
+}
+
+graalvmNative.toolchainDetection = false
+micronaut {
+    runtime("netty")
+    testRuntime("junit5")
+    processing {
+        incremental(true)
+        annotations("app.*")
+    }
+}
+
+
+jte {
+    sourceDirectory = file("src/main/jte").toPath()
+    generate()
+    generateNativeImageResources = true
+}
+
+
+graalvmNative.binaries.configureEach {
+    jvmArgs("--add-exports=org.graalvm.sdk/org.graalvm.nativeimage.impl=ALL-UNNAMED")
+}

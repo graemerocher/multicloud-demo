@@ -1,0 +1,14 @@
+micronaut:
+  application:
+    name: oci
+  object-storage:
+    oracle-cloud:
+      images:
+        bucket: bucket-20220926-1302
+        namespace: frepf2lc7rqc
+datasources:
+  default:
+    ocid: ${ATP_OCID}
+    wallet-password: ${ATP_WALLET_PASSWORD}
+    username: ${ATP_USERNAME}
+    password: ${ATP_PASSWORD}
