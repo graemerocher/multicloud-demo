@@ -28,13 +28,15 @@ dependencies {
     implementation("io.opentelemetry.contrib:opentelemetry-aws-xray")
 
     // object storage
-    implementation("io.micronaut.objectstorage:micronaut-object-storage-aws")
+    implementation("io.micronaut.objectstorage:micronaut-object-storage-aws:1.1.0")
 
     // secrets
     implementation("io.micronaut.aws:micronaut-aws-secretsmanager")
 
     // database
     implementation("io.micronaut.data:micronaut-data-jdbc")
+    runtimeOnly("io.micronaut.flyway:micronaut-flyway")
+    runtimeOnly("org.flywaydb:flyway-mysql")
     runtimeOnly("mysql:mysql-connector-java")
 }
 
