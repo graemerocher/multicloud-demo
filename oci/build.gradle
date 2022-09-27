@@ -14,6 +14,7 @@ repositories {
 dependencies {
     annotationProcessor("io.micronaut:micronaut-http-validation")
     implementation(project(":app"))
+    implementation("io.opentelemetry:opentelemetry-exporter-zipkin")
     implementation("io.micronaut.objectstorage:micronaut-object-storage-oracle-cloud")
     implementation("io.micronaut.oraclecloud:micronaut-oraclecloud-atp")
     implementation("io.micronaut.oraclecloud:micronaut-oraclecloud-sdk")

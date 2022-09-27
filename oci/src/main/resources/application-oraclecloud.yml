@@ -12,3 +12,9 @@ datasources:
     wallet-password: ${ATP_WALLET_PASSWORD}
     username: ${ATP_USERNAME}
     password: ${ATP_PASSWORD}
+otel:
+  traces:
+    exporter: zipkin
+  exporter:
+    zipkin:
+      endpoint: https://${APM_ENDPOINT}/20200101/observations/public-span?dataFormat=zipkin&dataFormatVersion=2&dataKey=${APM_KEY}

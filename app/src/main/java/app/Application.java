@@ -38,7 +38,7 @@ public class Application {
 
             Person alvaro = new Person();
             alvaro.setName("Alvaro");
-            alvaro.setImageId("graeme@grails.org_0239.jpg");
+            alvaro.setImageId("alvaro.jpg");
             repository.saveAll(Arrays.asList(graeme, alvaro));
         }
     }
