@@ -1,6 +1,7 @@
 package app;
 
 import java.util.Map;
+import java.util.Optional;
 
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.Controller;
@@ -41,14 +42,9 @@ public class PersonController {
     }
 
     @Get("/images/{id}")
-    StreamedFile getImage(Long id) {
-        Person person = repository.findById(id).orElse(null);
-        if (person != null) {
-            ObjectStorageEntry<?> entry = objectStorageOperations.retrieve(person.getImageId()).orElse(null);
-            if (entry != null) {
-                return new StreamedFile(entry.getInputStream(), MediaType.IMAGE_JPEG_TYPE);
-            }
-        }
-        return null;
+    Optional<StreamedFile> getImage(Long id) {
+        return repository.findById(id)
+                .flatMap(person -> objectStorageOperations.retrieve(person.getImageId()))
+                .map(e -> ((ObjectStorageEntry<?>) e).toStreamedFile());
     }
 }

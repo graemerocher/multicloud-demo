@@ -15,7 +15,7 @@ dependencies {
     annotationProcessor("io.micronaut:micronaut-http-validation")
     implementation(project(":app"))
     implementation("io.micronaut.aws:micronaut-aws-sdk-v2")
-    implementation("io.micronaut.objectstorage:micronaut-object-storage-aws")
+    implementation("io.micronaut.objectstorage:micronaut-object-storage-aws:1.1.0")
     implementation("io.micronaut.aws:micronaut-aws-secretsmanager")
     runtimeOnly("mysql:mysql-connector-java")
 }
