@@ -21,7 +21,7 @@ dependencies {
     implementation("io.micronaut.views:micronaut-views-jte")
     implementation("jakarta.annotation:jakarta.annotation-api")
     runtimeOnly("ch.qos.logback:logback-classic")
-    testImplementation("com.h2database:h2")
+    runtimeOnly("com.h2database:h2")
     implementation("io.micronaut:micronaut-validation")
 }
 
