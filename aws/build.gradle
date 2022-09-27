@@ -33,6 +33,7 @@ dependencies {
     implementation("io.micronaut.aws:micronaut-aws-secretsmanager")
 
     // database
+    implementation("io.micronaut.data:micronaut-data-jdbc")
     runtimeOnly("mysql:mysql-connector-java")
 }
 

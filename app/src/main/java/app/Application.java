@@ -32,13 +32,8 @@ public class Application {
     void onStart(StartupEvent event) {
         if (repository.count() != 2) {
             repository.deleteAll();
-            Person graeme = new Person();
-            graeme.setName("Graeme");
-            graeme.setImageId("graeme@grails.org_0239.jpg");
-
-            Person alvaro = new Person();
-            alvaro.setName("Alvaro");
-            alvaro.setImageId("alvaro.jpg");
+            Person graeme = new Person("Graeme", "graeme@grails.org_0239.jpg");
+            Person alvaro = new Person("Alvaro", "alvaro.jpg");
             repository.saveAll(Arrays.asList(graeme, alvaro));
         }
     }

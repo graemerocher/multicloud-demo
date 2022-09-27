@@ -30,7 +30,7 @@ class AppTest {
     void testLoadImage(PeopleClient client, PersonRepository repository) {
         Person first = repository.findAll().iterator().next();
 
-        byte[] image = client.getImage(first.getId());
+        byte[] image = client.getImage(first.id());
         assertNotNull(image);
     }
 

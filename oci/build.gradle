@@ -16,6 +16,7 @@ dependencies {
     implementation(project(":app")) {
         exclude group:'com.h2database', module:'h2'
     }
+
     // tracing
     implementation("io.opentelemetry:opentelemetry-exporter-zipkin")
     // metrics
@@ -27,6 +28,7 @@ dependencies {
     implementation("io.micronaut.objectstorage:micronaut-object-storage-oracle-cloud")
 
     // database
+    implementation("io.micronaut.data:micronaut-data-jdbc")
     implementation("io.micronaut.oraclecloud:micronaut-oraclecloud-atp")
     implementation("io.micronaut.sql:micronaut-jdbc-hikari")
 

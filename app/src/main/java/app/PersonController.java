@@ -44,7 +44,7 @@ public class PersonController {
     StreamedFile getImage(Long id) {
         Person person = repository.findById(id).orElse(null);
         if (person != null) {
-            ObjectStorageEntry<?> entry = objectStorageOperations.retrieve(person.getImageId()).orElse(null);
+            ObjectStorageEntry<?> entry = objectStorageOperations.retrieve(person.imageId()).orElse(null);
             if (entry != null) {
                 return new StreamedFile(entry.getInputStream(), MediaType.IMAGE_JPEG_TYPE);
             }

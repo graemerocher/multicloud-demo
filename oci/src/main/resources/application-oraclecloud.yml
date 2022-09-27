@@ -33,6 +33,7 @@ datasources:
     wallet-password: ${ATP_WALLET_PASSWORD}
     username: ${ATP_USERNAME}
     password: ${ATP_PASSWORD}
+    dialect: oracle
 otel:
   traces:
     exporter: zipkin

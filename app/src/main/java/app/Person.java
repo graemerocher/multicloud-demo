@@ -1,38 +1,15 @@
 package app;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 
-@Entity
-public class Person {
-    @Id
-    @GeneratedValue
-    private Long id;
-    private String imageId;
-    private String name;
+import io.micronaut.core.annotation.Nullable;
+import io.micronaut.data.annotation.GeneratedValue;
+import io.micronaut.data.annotation.Id;
+import io.micronaut.data.annotation.MappedEntity;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getImageId() {
-        return imageId;
-    }
-
-    public void setImageId(String imageId) {
-        this.imageId = imageId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+@MappedEntity
+public record Person(@Id
+                     @GeneratedValue @Nullable Long id, String name, String imageId) {
+    public Person(String name, String imageId) {
+        this(null, name, imageId);
     }
 }
