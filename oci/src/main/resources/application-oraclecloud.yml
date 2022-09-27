@@ -1,6 +1,4 @@
 micronaut:
-  application:
-    name: oci
 # Object Storage with Oracle Cloud Object Storage
   object-storage:
     oracle-cloud:
@@ -41,8 +39,6 @@ flyway:
   datasources:
     default:
       enabled: true
-      baseline-on-migrate: true
-      clean-schema: true
 # Tracing via Oracle Cloud Application Performance Monitoring (APM)
 otel:
   traces:
