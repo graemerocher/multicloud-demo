@@ -12,13 +12,27 @@ repositories {
 }
 
 dependencies {
-    annotationProcessor("io.micronaut:micronaut-http-validation")
+    // shared code
     implementation(project(":app")) {
         exclude group:'com.h2database', module:'h2'
     }
+
+    // SDK
     implementation("io.micronaut.aws:micronaut-aws-sdk-v2")
+
+    // tracing
+    implementation("io.micronaut.tracing:micronaut-tracing-opentelemetry-http")
+    implementation("io.opentelemetry:opentelemetry-exporter-otlp")
+    implementation("io.opentelemetry:opentelemetry-extension-aws")
+    implementation("io.opentelemetry.contrib:opentelemetry-aws-xray")
+
+    // object storage
     implementation("io.micronaut.objectstorage:micronaut-object-storage-aws")
+
+    // secrets
     implementation("io.micronaut.aws:micronaut-aws-secretsmanager")
+
+    // database
     runtimeOnly("mysql:mysql-connector-java")
 }
 

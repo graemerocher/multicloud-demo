@@ -12,7 +12,7 @@ repositories {
 }
 
 dependencies {
-    annotationProcessor("io.micronaut:micronaut-http-validation")
+    // shared code
     implementation(project(":app")) {
         exclude group:'com.h2database', module:'h2'
     }
