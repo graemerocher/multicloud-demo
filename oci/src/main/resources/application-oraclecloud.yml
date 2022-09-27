@@ -34,6 +34,12 @@ datasources:
     username: ${ATP_USERNAME}
     password: ${ATP_PASSWORD}
     dialect: oracle
+flyway:
+  datasources:
+    default:
+      enabled: true
+      baseline-on-migrate: true
+      clean-schema: true
 otel:
   traces:
     exporter: zipkin

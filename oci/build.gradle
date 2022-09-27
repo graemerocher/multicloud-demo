@@ -32,6 +32,7 @@ dependencies {
     implementation("io.micronaut.data:micronaut-data-jdbc")
     implementation("io.micronaut.oraclecloud:micronaut-oraclecloud-atp")
     implementation("io.micronaut.sql:micronaut-jdbc-hikari")
+    runtimeOnly("io.micronaut.flyway:micronaut-flyway")
 
     // sdk
     implementation("io.micronaut.oraclecloud:micronaut-oraclecloud-sdk")

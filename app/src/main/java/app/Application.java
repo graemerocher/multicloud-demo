@@ -30,12 +30,10 @@ public class Application {
     @EventListener
     @Transactional
     void onStart(StartupEvent event) {
-        if (repository.count() != 2) {
-            repository.deleteAll();
-            Person graeme = new Person("Graeme", "graeme@grails.org_0239.jpg");
-            Person alvaro = new Person("Alvaro", "alvaro.jpg");
-            repository.saveAll(Arrays.asList(graeme, alvaro));
-        }
+        repository.deleteAll();
+        Person graeme = new Person("Graeme", "graeme@grails.org_0239.jpg");
+        Person alvaro = new Person("Alvaro", "alvaro.jpg");
+        repository.saveAll(Arrays.asList(graeme, alvaro));
     }
 
     @Get

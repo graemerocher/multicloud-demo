@@ -35,6 +35,8 @@ dependencies {
 
     // database
     implementation("io.micronaut.data:micronaut-data-jdbc")
+    runtimeOnly("io.micronaut.flyway:micronaut-flyway")
+    runtimeOnly("org.flywaydb:flyway-mysql")
     runtimeOnly("mysql:mysql-connector-java")
 }
 
