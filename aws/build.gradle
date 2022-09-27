@@ -13,6 +13,7 @@ repositories {
 
 dependencies {
     // shared code
+    annotationProcessor("io.micronaut.data:micronaut-data-processor")
     implementation(project(":app")) {
         exclude group:'com.h2database', module:'h2'
     }
