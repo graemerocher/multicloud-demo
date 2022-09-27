@@ -7,6 +7,7 @@ import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import jakarta.inject.Inject;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -17,9 +18,9 @@ class AppTest {
     EmbeddedApplication<?> application;
 
     @Test
-    void testListPeople(PeopleClient client) {
+    void testListPeople(PeopleClient client, PersonRepository repository) {
         assertTrue(application.isRunning());
-
+        assertEquals(2, repository.count());
         String content = client.list();
         assertTrue(content.contains("List of People:"));
     }
