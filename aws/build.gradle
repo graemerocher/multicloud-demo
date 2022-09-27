@@ -40,7 +40,7 @@ dependencies {
 
 
 application {
-    mainClass.set("aws.Application")
+    mainClass.set("aws.AwsApplication")
 }
 java {
     sourceCompatibility = JavaVersion.toVersion("17")

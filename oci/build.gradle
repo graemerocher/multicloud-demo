@@ -43,7 +43,7 @@ dependencies {
 
 
 application {
-    mainClass.set("oci.Application")
+    mainClass.set("oci.OciApplication")
 }
 java {
     sourceCompatibility = JavaVersion.toVersion("17")
