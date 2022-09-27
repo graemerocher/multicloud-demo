@@ -21,6 +21,10 @@ dependencies {
     // SDK
     implementation("io.micronaut.aws:micronaut-aws-sdk-v2")
 
+    // metrics
+    implementation("io.micronaut.micrometer:micronaut-micrometer-core")
+    implementation("io.micronaut.micrometer:micronaut-micrometer-registry-cloudwatch")
+
     // tracing
     implementation("io.micronaut.tracing:micronaut-tracing-opentelemetry-http")
     implementation("io.opentelemetry:opentelemetry-exporter-otlp")

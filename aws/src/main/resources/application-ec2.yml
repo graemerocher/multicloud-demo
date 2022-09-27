@@ -1,10 +1,34 @@
 micronaut:
   application:
     name: aws
+# Object Storage via S3
   object-storage:
     aws:
       images:
         bucket: cloudworld-demo
+# Metrics via Cloud Watch
+  metrics:
+    enabled: true
+    binders:
+      files:
+        enabled: true
+      jdbc:
+        enabled: true
+      jvm:
+        enabled: true
+      logback:
+        enabled: true
+      processor:
+        enabled: true
+      uptime:
+        enabled: true
+      web:
+        enabled: true
+    export:
+      cloudwatch:
+        enabled: true
+        namespace: cloudworld2022demo
+# Database via AWS RDS
 datasources:
   default:
     driverClassName: com.mysql.cj.jdbc.Driver
@@ -16,6 +40,7 @@ flyway:
   datasources:
     default:
       enabled: true
+# Tracing via Cloud Watch Tracing
 otel:
   traces:
     exporter: otlp

@@ -1,3 +1,4 @@
+# Secrets via Oracle Cloud Vault
 micronaut:
   config-client:
     enabled: true

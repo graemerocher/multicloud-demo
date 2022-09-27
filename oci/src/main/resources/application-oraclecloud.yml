@@ -1,11 +1,13 @@
 micronaut:
   application:
     name: oci
+# Object Storage with Oracle Cloud Object Storage
   object-storage:
     oracle-cloud:
       images:
         bucket: bucket-20220926-1302
         namespace: frepf2lc7rqc
+# Metrics via Oracle Cloud Application Monitoring
   metrics:
     enabled: true
     binders:
@@ -27,6 +29,7 @@ micronaut:
       oraclecloud:
         enabled: true
         namespace: cloudworld2022demo
+# Database via Oracle Cloud Autonomous Transaction Processing
 datasources:
   default:
     ocid: ${ATP_OCID}
@@ -40,6 +43,7 @@ flyway:
       enabled: true
       baseline-on-migrate: true
       clean-schema: true
+# Tracing via Oracle Cloud Application Performance Monitoring (APM)
 otel:
   traces:
     exporter: zipkin

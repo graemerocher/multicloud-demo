@@ -1,3 +1,4 @@
+# Secrets via AWS Secrets Manager
 micronaut:
   config-client:
     enabled: true
