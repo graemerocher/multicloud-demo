@@ -160,7 +160,6 @@ public class AppStack extends Stack {
                 .machineImage(MachineImage.latestAmazonLinux())
                 .securityGroup(securityGroupEC2)
                 .vpcSubnets(SubnetSelection.builder().subnetType(SubnetType.PUBLIC).build())
-                .keyName("aws")
                 .vpc(dbInstance.getVpc()).build();
 
         ecInstance.addUserData(
