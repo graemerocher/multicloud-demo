@@ -3,7 +3,7 @@ micronaut:
   object-storage:
     aws:
       images:
-        bucket: cloudworld-demo
+        bucket: ${bucketName}
 # Metrics via Cloud Watch
   metrics:
     enabled: true
