@@ -3,8 +3,8 @@ micronaut:
   object-storage:
     oracle-cloud:
       images:
-        bucket: bucket-20220926-1302
-        namespace: frepf2lc7rqc
+        bucket: ${OBJECT_STORAGE_BUCKET}
+        namespace: ${OBJECT_STORAGE_NAMESPACE}
 # Metrics via Oracle Cloud Application Monitoring
   metrics:
     enabled: true
@@ -25,6 +25,7 @@ micronaut:
         enabled: true
     export:
       oraclecloud:
+        compartmentId: ${COMPARTMENT_ID}
         enabled: true
         namespace: cloudworld2022demo
 # Database via Oracle Cloud Autonomous Transaction Processing
@@ -45,4 +46,4 @@ otel:
     exporter: zipkin
   exporter:
     zipkin:
-      endpoint: https://${APM_ENDPOINT}/20200101/observations/public-span?dataFormat=zipkin&dataFormatVersion=2&dataKey=${APM_KEY}
+      endpoint: ${APM_ENDPOINT}/20200101/observations/public-span?dataFormat=zipkin&dataFormatVersion=2&dataKey=${APM_KEY2}
