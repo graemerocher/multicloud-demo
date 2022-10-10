@@ -23,6 +23,7 @@ locals {
   allow_group_manage_vault_keys_statements = [
     "allow dynamic-group ${var.dynamic_group_name} to read secret-family in compartment id ${var.compartment_ocid}",
     "Allow dynamic-group ${var.dynamic_group_name} to manage objects in compartment id ${var.compartment_ocid}",
-    "Allow dynamic-group ${var.dynamic_group_name} to use metrics in compartment id ${var.compartment_ocid}"
+    "Allow dynamic-group ${var.dynamic_group_name} to use metrics in compartment id ${var.compartment_ocid}",
+    "Allow dynamic-group ${var.dynamic_group_name} to manage autonomous-database in compartment id ${var.compartment_ocid}"
   ]
 }

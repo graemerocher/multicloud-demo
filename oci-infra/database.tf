@@ -6,7 +6,8 @@ resource "oci_database_autonomous_database" "autonomous_database" {
   db_name                  = var.autonomous_database_name
   display_name             = var.autonomous_database_name
   whitelisted_ips          = [""]
-
+  is_free_tier             = true
+  license_model            = var.autonomous_database_license_model
 }
 
 ## DB Wallet

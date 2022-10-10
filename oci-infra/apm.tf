@@ -1,7 +1,8 @@
 resource "oci_apm_apm_domain" "apm_domain" {
   #Required
   compartment_id = var.compartment_ocid
-  display_name = var.apm_domain_display_name
+  display_name   = var.apm_domain_display_name
+  is_free_tier   = true
 }
 
 data "oci_apm_data_keys" "apm_keys" {

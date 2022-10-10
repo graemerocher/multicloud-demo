@@ -1,4 +1,3 @@
-
 # Gets a list of Availability Domains
 data "oci_identity_availability_domains" "ADs" {
   compartment_id = var.tenancy_ocid
@@ -12,7 +11,7 @@ data "oci_core_images" "oracle_linux_image" {
 
 # Choose an Availability Domain
 variable "availability_domain" {
-  default = 3
+  default = 1
 }
 
 data "oci_limits_services" "compute_services" {
@@ -59,7 +58,7 @@ data "oci_core_images" "compute_images" {
   compartment_id           = var.compartment_ocid
   operating_system         = var.image_operating_system
   operating_system_version = var.image_operating_system_version
-  shape                    = "VM.Standard.E2.1.Micro"
+  shape                    = var.instance_shape
   sort_by                  = "TIMECREATED"
   sort_order               = "DESC"
 }

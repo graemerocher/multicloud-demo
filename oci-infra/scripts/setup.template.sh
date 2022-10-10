@@ -26,7 +26,7 @@ yum -y install unzip jq
 yum -y install oracle-release-el7
 yum-config-manager --enable ol7_oracle_instantclient
 yum -y install oracle-instantclient${oracle_client_version}-basic oracle-instantclient${oracle_client_version}-jdbc oracle-instantclient${oracle_client_version}-sqlplus
-yum -y install graalvm22-ee-17.x86_64
+yum -y install graalvm22-ee-17
 
 # Enable and start services
 systemctl daemon-reload

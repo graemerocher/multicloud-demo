@@ -1,10 +1,8 @@
-# Copyright (c) 2019-2021 Oracle and/or its affiliates. All rights reserved.
-# Licensed under the Universal Permissive License v 1.0 as shown at http://oss.oracle.com/licenses/upl.
-#
-
 variable "tenancy_ocid" {}
 variable "region" {}
-variable "compartment_ocid" {}
+variable "compartment_ocid" {
+  default = var.tenancy_ocid
+}
 
 variable "profile" {
   default = "DEFAULT"
@@ -108,5 +106,25 @@ variable "multicloud_route_table_display_name" {
 }
 
 variable "bucket_name" {
-  default = "Multicloud_Bucket"
+  default = "MultiCloud_Bucket"
+}
+
+variable "oci_kms_key_display_name" {
+  default = "MultiCloud key"
+}
+
+variable "vault_ocid" {
+  default = ""
+}
+
+variable "vault_key_ocid" {
+  default = ""
+}
+
+variable "create_vault" {
+  default = true
+}
+
+variable "create_vault_key" {
+  default = true
 }

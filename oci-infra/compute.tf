@@ -15,15 +15,15 @@ config_file_profile = var.profile
 }
 
 resource "oci_core_instance" "app_instance" {
-  availability_domain                 = "${lookup(data.oci_identity_availability_domains.ADs.availability_domains[var.availability_domain - 1],"name")}"
-  compartment_id                      = var.compartment_ocid
-  display_name                        = var.app_instance_display_name
-  shape                               = var.instance_shape
+  availability_domain = lookup(data.oci_identity_availability_domains.ADs.availability_domains[var.availability_domain - 1],"name")
+  compartment_id      = var.compartment_ocid
+  display_name        = var.app_instance_display_name
+  shape               = var.instance_shape
 
   create_vnic_details {
     subnet_id        = oci_core_subnet.multicloud_subnet.id
     display_name     = var.vnic_display_name
-    assign_public_ip =  true
+    assign_public_ip = true
   }
 
   source_details {
@@ -63,13 +63,13 @@ locals {
     })
   deploy_template = templatefile("${path.module}/scripts/deploy.template.sh",
     {
-      oracle_client_version   = var.oracle_client_version
-      db_name                 = oci_database_autonomous_database.autonomous_database.db_name
-      atp_pw                  = random_string.autonomous_database_admin_password.result
-      wallet_par              = "https://objectstorage.${var.region}.oraclecloud.com${oci_objectstorage_preauthrequest.multicloud_wallet_preauth.access_uri}"
-      jar_par                 = "https://objectstorage.${var.region}.oraclecloud.com${oci_objectstorage_preauthrequest.multicloud_app_preauth.access_uri}"
-      compartment_id          = var.compartment_ocid
-      vault_id                = oci_kms_vault.multicloud_vault.id
+      oracle_client_version = var.oracle_client_version
+      db_name               = oci_database_autonomous_database.autonomous_database.db_name
+      atp_pw                = random_string.autonomous_database_admin_password.result
+      wallet_par            = "https://objectstorage.${var.region}.oraclecloud.com${oci_objectstorage_preauthrequest.multicloud_wallet_preauth.access_uri}"
+      jar_par               = "https://objectstorage.${var.region}.oraclecloud.com${oci_objectstorage_preauthrequest.multicloud_app_preauth.access_uri}"
+      compartment_id        = var.compartment_ocid
+      vault_id              = data.oci_kms_vault.multicloud_vault_query.id
     })
 
   multicloud_sql_template = templatefile("${path.module}/scripts/setup.sql",

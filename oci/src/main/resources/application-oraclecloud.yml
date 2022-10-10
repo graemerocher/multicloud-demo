@@ -3,8 +3,8 @@ micronaut:
   object-storage:
     oracle-cloud:
       images:
-        bucket: ${OBJECT_STORAGE_BUCKET}
-        namespace: ${OBJECT_STORAGE_NAMESPACE}
+        bucket: ${BUCKET_NAME}
+        namespace: ${BUCKET_NAMESPACE}
 # Metrics via Oracle Cloud Application Monitoring
   metrics:
     enabled: true
@@ -46,4 +46,4 @@ otel:
     exporter: zipkin
   exporter:
     zipkin:
-      endpoint: ${APM_ENDPOINT}/20200101/observations/public-span?dataFormat=zipkin&dataFormatVersion=2&dataKey=${APM_KEY2}
+      endpoint: ${APM_ENDPOINT}/20200101/observations/public-span?dataFormat=zipkin&dataFormatVersion=2&dataKey=${APM_KEY}
