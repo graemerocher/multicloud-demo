@@ -4,10 +4,11 @@ micronaut:
     enabled: true
 oci:
   config:
-    profile: DEFAULT
+    instance-principal:
+      enabled: true
   vault:
     config:
       enabled: true
     vaults:
-      - compartment-ocid: 'ocid1.tenancy.oc1..aaaaaaaa4xd6m6fxq3jzu4f73cfbp5e4ghwnpvmuhyejjh6ktr7h7jzijsxa'
-        ocid: 'ocid1.vault.oc1.eu-frankfurt-1.cbrtdm5caah2o.abtheljsncdvacgloyzhihfk3iozbjsqkuxqphcaxvuveyppyvcjfpns67ta'
+      - compartment-ocid: ${COMPARTMENT_ID}
+        ocid: ${VAULT_OCID}

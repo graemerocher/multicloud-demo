@@ -1,0 +1,39 @@
+#cloud-config
+
+write_files:
+  # setup script
+  - path: "/root/setup.preflight.sh"
+    permissions: "0777"
+    encoding: "gzip+base64"
+    content: |
+      ${setup_preflight_sh_content}
+  - path: "/root/setup.sh"
+    permissions: "0777"
+    encoding: "gzip+base64"
+    content: |
+      ${setup_template_sh_content}
+  - path: "/root/deploy.sh"
+    permissions: "0777"
+    encoding: "gzip+base64"
+    content: |
+      ${deploy_template_content}
+  - path: "/root/multicloud.sql"
+    permissions: "0777"
+    encoding: "gzip+base64"
+    content: |
+      ${multicloud_sql_template_content}
+  - path: "/root/mushop.env"
+    permissions: "0777"
+    content: |
+      OADB_USER=multicloud
+      OADB_PW='${multicloud_password}'
+      OADB_SERVICE=${db_name}_tp
+
+runcmd:
+  - echo "Running prep scripts..."
+  - /root/setup.preflight.sh
+  - echo "Finished prep scripts."
+  - echo "Starting App..."
+
+final_message: "The system is finally up, after $UPTIME seconds"
+output: {all: '| tee -a /root/cloud-init-output.log'}

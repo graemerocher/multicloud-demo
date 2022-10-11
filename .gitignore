@@ -17,3 +17,9 @@ gradle-app.setting
 # gradle/wrapper/gradle-wrapper.properties
 
 .idea
+
+# terraform stuff
+oci-infra/.terraform.lock.hcl
+oci-infra/.terraform/
+oci-infra/terraform.tfstate
+oci-infra/terraform.tfstate.backup
