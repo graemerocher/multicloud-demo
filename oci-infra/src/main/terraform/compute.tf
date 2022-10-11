@@ -61,12 +61,12 @@ data "cloudinit_config" "init" {
 
 ## Files and Templatefiles
 locals {
-  setup_preflight = file("${path.module}/scripts/setup.preflight.sh")
-  setup_template = templatefile("${path.module}/scripts/setup.template.sh",
+  setup_preflight = file(var.resources.setup-preflight_sh.path)
+  setup_template = templatefile(var.resources.setup-template_sh.path,
     {
       oracle_client_version = var.oracle_client_version
     })
-  deploy_template = templatefile("${path.module}/scripts/deploy.template.sh",
+  deploy_template = templatefile(var.resources.deploy-template_sh.path,
     {
       oracle_client_version = var.oracle_client_version
       db_name               = oci_database_autonomous_database.autonomous_database.db_name
@@ -77,12 +77,12 @@ locals {
       vault_id              = data.oci_kms_vault.multicloud_vault_query.id
     })
 
-  multicloud_sql_template = templatefile("${path.module}/scripts/setup.sql",
+  multicloud_sql_template = templatefile(var.resources.setup_sql.path,
     {
       multicloud_password = random_string.multicloud_db_password.result
     })
 
-  cloud_init = templatefile("${path.module}/scripts/cloud-config.template.yaml",
+  cloud_init = templatefile(var.resources.cloud-config-template_yaml.path,
     {
       setup_preflight_sh_content     = base64gzip(local.setup_preflight)
       setup_template_sh_content      = base64gzip(local.setup_template)

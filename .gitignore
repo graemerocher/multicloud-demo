@@ -19,7 +19,8 @@ gradle-app.setting
 .idea
 
 # terraform stuff
-oci-infra/.terraform.lock.hcl
-oci-infra/.terraform/
-oci-infra/terraform.tfstate
-oci-infra/terraform.tfstate.backup
+oci-infra/src/main/terraform/.terraform.lock.hcl
+oci-infra/src/main/terraform/.terraform/
+oci-infra/src/main/terraform/terraform.tfstate
+oci-infra/src/main/terraform/terraform.tfstate.backup
+

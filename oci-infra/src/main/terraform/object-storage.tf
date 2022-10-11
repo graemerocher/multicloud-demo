@@ -9,12 +9,12 @@ resource "oci_objectstorage_bucket" "multicloud_bucket" {
 }
 
 resource "oci_objectstorage_object" "multicloud_media" {
-  for_each = fileset("../app/src/main/resources/images", "**")
+  for_each = fileset("../../../../../app/src/main/resources/images", "**")
 
   bucket        = oci_objectstorage_bucket.multicloud_bucket.name
   namespace     = oci_objectstorage_bucket.multicloud_bucket.namespace
   object        = each.value
-  source        = "../app/src/main/resources/images/${each.value}"
+  source        = "../../../../../app/src/main/resources/images/${each.value}"
   cache_control = "max-age=604800, public, no-transform"
 }
 
@@ -39,7 +39,7 @@ resource "oci_objectstorage_object" "multicloud_app" {
   bucket        = oci_objectstorage_bucket.multicloud_bucket.name
   namespace     = oci_objectstorage_bucket.multicloud_bucket.namespace
   object        = "app.jar"
-  source        = "../oci/build/libs/oci-0.1-all.jar"
+  source        = "../../../../../oci/build/libs/oci-0.1-all.jar"
   cache_control = "max-age=604800, public, no-transform"
 }
 

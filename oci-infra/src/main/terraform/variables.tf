@@ -68,7 +68,7 @@ variable "image_operating_system_version" {
 }
 
 variable "dynamic_group_name" {
-  default = "Test"
+  default = "multicloud_dynamic_group"
 }
 
 variable "apm_domain_display_name" {
