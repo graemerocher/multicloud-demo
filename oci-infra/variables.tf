@@ -1,8 +1,6 @@
 variable "tenancy_ocid" {}
 variable "region" {}
-variable "compartment_ocid" {
-  default = var.tenancy_ocid
-}
+variable "compartment_ocid" {}
 
 variable "profile" {
   default = "DEFAULT"
@@ -13,7 +11,7 @@ variable "public_ssh_key" {
 }
 
 variable "instance_shape" {
-  default = "VM.Standard.E2.1.Micro"
+  default = "VM.Standard.A1.Flex"
 }
 
 variable "internet_gateway_enabled" {
@@ -127,4 +125,11 @@ variable "create_vault" {
 
 variable "create_vault_key" {
   default = true
+}
+
+variable "instance_ocpus" {
+  default = 1
+}
+variable "instance_shape_config_memory_in_gbs" {
+  default = 16
 }
