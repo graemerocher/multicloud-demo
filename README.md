@@ -25,15 +25,11 @@ The `oci` subproject depends on the `app` project and introduces configuration (
 
 The `oci-infra` subproject contains terraform scripts to deploy `oci` subproject to the OCI. It uses OCI CLI for authentication.
 
-To run it you have perform the following steps:
+To run it you have to perform the following steps:
 
 * Install [OCI CLI](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/cliinstall.htm) and configure it.
-* Install [Terraform CLI](https://learn.hashicorp.com/tutorials/terraform/install-cli).
-* Edit `terraform.tfvars` with necessary information.
-* Run `./gradlew shadowJar` in the root of the project.
-* Run `terraform init ` inside `oci-infra` subproject.
-* Run `terraform apply` inside `oci-infra` subproject.
-
+* export ENABLE_TF_APPLY=true
+* Run `./gradlew oci-infra:terraformMainApply` in the root of the project. By default, it will use DEFAULT profile, but you can switch to different with argument `-Pprofile={PROFILE_NAME}`
 After successful build the application URL will be written to the terminal window.
 
 You can destroy the Cloud resources when you are done by running `terraform destroy`.
