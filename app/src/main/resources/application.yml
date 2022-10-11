@@ -1,4 +1,6 @@
 micronaut:
+  server:
+    thread-selection: IO
   router:
     static-resources:
       images:
@@ -9,4 +11,3 @@ netty:
   default:
     allocator:
       max-order: 3
-jpa.default.properties.hibernate.hbm2ddl.auto: update
