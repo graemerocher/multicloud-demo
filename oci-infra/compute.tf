@@ -20,6 +20,11 @@ resource "oci_core_instance" "app_instance" {
   display_name        = var.app_instance_display_name
   shape               = var.instance_shape
 
+  shape_config {
+    ocpus = var.instance_ocpus
+    memory_in_gbs = var.instance_shape_config_memory_in_gbs
+  }
+
   create_vnic_details {
     subnet_id        = oci_core_subnet.multicloud_subnet.id
     display_name     = var.vnic_display_name
@@ -37,7 +42,7 @@ resource "oci_core_instance" "app_instance" {
   }
   metadata = {
     user_data           = data.cloudinit_config.init.rendered
-    ssh_authorized_keys = var.public_ssh_key
+    ssh_authorized_keys = var.public_ssh_key == "" ? null : var.public_ssh_key
   }
 
 }
