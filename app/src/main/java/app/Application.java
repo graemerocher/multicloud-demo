@@ -1,16 +1,17 @@
 package app;
 
 import java.net.URI;
-import java.util.Arrays;
+import java.util.List;
+
 import javax.transaction.Transactional;
 
+import app.Person;
 import io.micronaut.context.event.StartupEvent;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.runtime.Micronaut;
 import io.micronaut.runtime.event.annotation.EventListener;
-import jakarta.inject.Singleton;
 
 @Controller("/")
 public class Application {
@@ -31,9 +32,9 @@ public class Application {
     @Transactional
     void onStart(StartupEvent event) {
         repository.deleteAll();
-        Person graeme = new Person("Graeme", "graeme@grails.org_0239.jpg");
-        Person alvaro = new Person("Alvaro", "alvaro.jpg");
-        repository.saveAll(Arrays.asList(graeme, alvaro));
+        var graeme = new Person("Graeme", "graeme@grails.org_0239.jpg");
+        var alvaro = new Person("Alvaro", "alvaro.jpg");
+        repository.saveAll(List.of(graeme, alvaro));
     }
 
     @Get

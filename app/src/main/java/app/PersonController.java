@@ -3,30 +3,21 @@ package app;
 import java.util.Map;
 import java.util.Optional;
 
-import io.micronaut.http.MediaType;
+import app.Person;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.server.types.files.StreamedFile;
 import io.micronaut.objectstorage.ObjectStorageEntry;
 import io.micronaut.objectstorage.ObjectStorageOperations;
-import io.micronaut.scheduling.TaskExecutors;
-import io.micronaut.scheduling.annotation.ExecuteOn;
 import io.micronaut.views.ModelAndView;
 import io.micronaut.views.View;
 
 @Controller("/people")
-@ExecuteOn(TaskExecutors.IO)
-public class PersonController {
-    private final PersonRepository repository;
-    private final ObjectStorageOperations<?, ?, ?> objectStorageOperations;
-
-    public PersonController(PersonRepository repository, ObjectStorageOperations<?, ?, ?> objectStorageOperations) {
-        this.repository = repository;
-        this.objectStorageOperations = objectStorageOperations;
-    }
+public record PersonController(
+    PersonRepository repository,
+    ObjectStorageOperations<?, ?, ?> objectStorageOperations) {
 
     @Get
-    @View("list")
     ModelAndView<?> list() {
         return new ModelAndView<>(
             "list",
@@ -34,11 +25,10 @@ public class PersonController {
         );
     }
 
-
     @Get("/{id}")
     @View("show")
-    Person show(Long id) {
-        return repository.findById(id).orElse(null);
+    Optional<Person> show(Long id) {
+        return repository.findById(id);
     }
 
     @Get("/images/{id}")
