@@ -1,17 +1,17 @@
-@param String name
-@param Long id
+@param app.Person person
+@param String message
 
 <html>
     <head>
-        <title>Person: ${name}</title>
+        <title>Person: ${person.name()}</title>
     </head>
     <style>
         @import url("/css/main.css");
     </style>
     <body>
-        <h1>Hello, ${name}!</h1>
+        <h1>${message}</h1>
         <p>
-            <img width="500" src="/people/images/${id}" />
+            <img width="500" src="/people/images/${person.name()}" />
         </p>
     </body>
 </html>
