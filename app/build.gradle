@@ -1,5 +1,5 @@
 plugins {
-    id("io.micronaut.application") version "3.6.0"
+    id("io.micronaut.application") version "3.6.2"
     id("gg.jte.gradle") version "1.12.1"
 }
 

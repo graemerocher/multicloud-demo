@@ -27,7 +27,7 @@ micronaut:
       oraclecloud:
         compartmentId: ${COMPARTMENT_ID}
         enabled: true
-        namespace: cloudworld2022demo
+        namespace: multicloud-demo
 # Database via Oracle Cloud Autonomous Transaction Processing
 datasources:
   default:

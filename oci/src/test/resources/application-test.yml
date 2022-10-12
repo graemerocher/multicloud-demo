@@ -1,0 +1,15 @@
+datasources:
+  default:
+    driverClassName: oracle.jdbc.OracleDriver
+    db-type: oracle
+    dialect: ORACLE
+micronaut:
+  metrics:
+    export:
+      oraclecloud:
+        enabled: false
+        namespace: test
+flyway:
+  datasources:
+    default:
+      enabled: true

@@ -1,7 +1,7 @@
 plugins {
     id("com.github.johnrengelman.shadow") version "7.1.2"
-    id("io.micronaut.application") version "3.6.0"
-    id("io.micronaut.test-resources") version "3.6.0"
+    id("io.micronaut.application") version "3.6.2"
+    id("io.micronaut.test-resources") version "3.6.2"
 }
 
 version = "0.1"
@@ -33,6 +33,7 @@ dependencies {
     implementation("io.micronaut.oraclecloud:micronaut-oraclecloud-atp")
     implementation("io.micronaut.sql:micronaut-jdbc-hikari")
     runtimeOnly("io.micronaut.flyway:micronaut-flyway")
+    runtimeOnly("com.oracle.database.jdbc:ojdbc11:21.6.0.0.1")
 
     // sdk
     implementation("io.micronaut.oraclecloud:micronaut-oraclecloud-sdk")

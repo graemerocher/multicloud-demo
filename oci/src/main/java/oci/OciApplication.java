@@ -7,7 +7,7 @@ public class OciApplication {
     public static void main(String[] args) {
         Micronaut.build(args)
                 .mainClass(OciApplication.class)
-                .environments(Environment.ORACLE_CLOUD)
+                .defaultEnvironments(Environment.ORACLE_CLOUD)
                 .start();
     }
 }

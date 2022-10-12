@@ -25,7 +25,7 @@ micronaut:
     export:
       cloudwatch:
         enabled: true
-        namespace: cloudworld2022demo
+        namespace: multicloud-demo
 # Database via AWS RDS
 datasources:
   default:
