@@ -27,7 +27,7 @@ micronaut:
       oraclecloud:
         compartmentId: ${COMPARTMENT_ID}
         enabled: true
-        namespace: multicloud-demo
+        namespace: multiclouddemo
 # Database via Oracle Cloud Autonomous Transaction Processing
 datasources:
   default:
