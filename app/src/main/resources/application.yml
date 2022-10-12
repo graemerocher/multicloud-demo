@@ -7,6 +7,10 @@ micronaut:
         enabled: true
         paths: classpath:images
         mapping: /images/**
+      css:
+        enabled: true
+        paths: classpath:css
+        mapping: /css/**
 netty:
   default:
     allocator:

@@ -6,20 +6,7 @@
     <title>People</title>
 </head>
 <style>
-    body {
-        background-image: url('/images/cloudworld-bg.png');
-        background-size: 100%;
-
-    }
-    h1 {
-        padding-top: 300px;
-        padding-left: 180px;
-        font-family: "Helvetica Neue", serif;
-    }
-    ol {
-        padding-left: 200px;
-        font-family: "Helvetica Neue", serif;
-    }
+    @import url("/css/main.css");
 </style>
 <body>
 <h1>List of People:</h1>

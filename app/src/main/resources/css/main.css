@@ -1,0 +1,18 @@
+body {
+    background-image: url('/images/gcn.png');
+    background-size: 100%;
+
+}
+h1 {
+    padding-top: 200px;
+    padding-left: 150px;
+    font-family: "Helvetica Neue", serif;
+}
+ol {
+    padding-left: 180px;
+    font-family: "Helvetica Neue", serif;
+}
+p {
+    padding-left: 150px;
+    font-family: "Helvetica Neue", serif;
+}
