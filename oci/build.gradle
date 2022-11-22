@@ -11,6 +11,8 @@ repositories {
     mavenCentral()
 }
 
+def mn_oci_version = "2.3.1"
+
 dependencies {
     // shared code
     annotationProcessor("io.micronaut.data:micronaut-data-processor")
@@ -23,24 +25,26 @@ dependencies {
     // metrics
     implementation("com.oracle.oci.sdk:oci-java-sdk-monitoring")
     implementation("io.micronaut.micrometer:micronaut-micrometer-core")
-    implementation("io.micronaut.oraclecloud:micronaut-oraclecloud-micrometer")
+    implementation("io.micronaut.oraclecloud:micronaut-oraclecloud-micrometer:$mn_oci_version")
 
     // object storage
     implementation("io.micronaut.objectstorage:micronaut-object-storage-oracle-cloud:1.1.0")
 
     // database
     implementation("io.micronaut.data:micronaut-data-jdbc")
-    implementation("io.micronaut.oraclecloud:micronaut-oraclecloud-atp")
+    implementation("io.micronaut.oraclecloud:micronaut-oraclecloud-atp:$mn_oci_version")
     implementation("io.micronaut.sql:micronaut-jdbc-hikari")
     runtimeOnly("io.micronaut.flyway:micronaut-flyway")
     runtimeOnly("com.oracle.database.jdbc:ojdbc11:21.6.0.0.1")
 
     // sdk
-    implementation("io.micronaut.oraclecloud:micronaut-oraclecloud-sdk")
+    implementation("io.micronaut.oraclecloud:micronaut-oraclecloud-sdk:$mn_oci_version")
 
     // vault
-    implementation("io.micronaut.oraclecloud:micronaut-oraclecloud-vault")
+    implementation("io.micronaut.oraclecloud:micronaut-oraclecloud-vault:$mn_oci_version")
 
+    implementation(platform("com.oracle.oci.sdk:oci-java-sdk-bom:3.0.1"))
+    implementation("io.micronaut.oraclecloud:micronaut-oraclecloud-httpclient-netty:$mn_oci_version")
 }
 
 
