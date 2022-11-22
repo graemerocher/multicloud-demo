@@ -30,6 +30,7 @@ To run it you have perform the following steps:
 * Install [OCI CLI](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/cliinstall.htm) and configure it.
 * Install [Terraform CLI](https://learn.hashicorp.com/tutorials/terraform/install-cli).
 * Edit `terraform.tfvars` with necessary information.
+* If you are not using an OCI "always free" tenancy you need to set `is_free_tier` to `false` in `apm.tf` and `database.tf`.
 * Run `./gradlew shadowJar` in the root of the project.
 * Run `terraform init ` inside `oci-infra` subproject.
 * Run `terraform apply` inside `oci-infra` subproject.
